@@ -1,3 +1,9 @@
+<script context="module">
+  export async function load({ fetch }) {
+    console.log("load for _post");
+  }
+</script>
+
 <script>
   export let title;
   export let date;
