@@ -14,15 +14,20 @@
   import Header from '$lib/components/Header.svelte'
   import '$lib/scss/style.scss'
 
-  import { fade } from 'svelte/transition'
-
   export let currentRoute
+
+  if (import.meta.hot) {
+    import.meta.hot.on('content-update', (data) => {
+      console.log("Got content update", data);
+      import.meta.hot.invalidate();
+    });
+  }
 </script>
 
 <Header />
 
 {#key currentRoute}
-  <main in:fade={{ duration: 150, delay: 150  }} out:fade={{ duration: 150 }}>
+  <main>
     <slot />
   </main>
 {/key}

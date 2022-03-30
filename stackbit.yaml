@@ -1,0 +1,26 @@
+stackbitVersion: ~0.4.0
+ssgName: custom
+nodeVersion: '14'
+cmsName: git
+assets:
+  referenceType: static
+  staticDir: static
+  uploadDir: images
+  publicPath: /
+dataDir: content/data
+pagesDir: src/routes
+pageLayoutKey: layout
+objectTypeKey: type
+contentModels:
+  GeneralPage:
+    isPage: true
+    urlPath: '/{slug}'
+    newFilePath: '{slug}.md'
+  Post:
+    isPage: true
+    urlPath: '/blog/{slug}'
+    newFilePath: 'blog/{slug}.md'
+modelsSource:
+  type: files
+  modelDirs:
+    - .stackbit/models
