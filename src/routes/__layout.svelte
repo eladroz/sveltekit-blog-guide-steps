@@ -22,7 +22,7 @@ import { invalidate } from '$app/navigation';
     import.meta.hot.on('content-update', (data) => {
       console.log("Got content update", data, "current route:", currentRoute);
       // This works ok for .svelte pages, but not for mdsvex (as the load() function does not run there)
-      invalidate(currentRoute);
+      invalidate(currentRoute).then((e)=> { console.log("then", e);}).catch((e)=> { console.log("catch", e);});
       //import.meta.hot.invalidate() // Full reload of page (incl. FOUC)
     });
   }
@@ -31,7 +31,7 @@ import { invalidate } from '$app/navigation';
 <Header />
 
 {#key currentRoute}
-  <main>
+  <main>a
     <slot />
   </main>
 {/key}
